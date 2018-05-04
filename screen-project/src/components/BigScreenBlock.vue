@@ -24,7 +24,7 @@ export default {
       this.$actus.query().then((response) => {
         this.actus = response.data.slice(slice).reverse()
         if (increment !== 0) {
-          // this.move(this.actus, 0, 4)
+          this.move(this.actus, 0, 4)
         }
         increment++
       }, (response) => {
@@ -47,13 +47,11 @@ export default {
     /** Event with Data */
     this.getData(-5)
     setInterval(() => {
-      if (incrementGetter === this.actus.length) {
-        incrementGetter = 0
-        this.getData(-5)
-      }
       this.move(this.actus, 0, 4)
-      incrementGetter++
     }, 3000)
+    setInterval(() => {
+      this.getData(-5)
+    }, 18000)
   }
 }
 </script>
@@ -82,21 +80,22 @@ div.container .item{
   overflow:hidden;
   box-sizing:border-box;
   z-index:0;
+  transition:all 1s cubic-bezier(.55,0,.1,1);
 }
 div.container .mask{
   position:absolute;
   width:100%; height:100%; left:0;
-  background-color:rgba(0,0,0,.1);
+  /* background-color:rgba(0,0,0,.1); */
   z-index:-1;
 }
 div.container .item:after{
   position:absolute;
   display:block;
-  width:10vh; height:10vh; left:calc(50% - 5vh); top:calc(50% - 5vh);
+  width:50vh; height:50vh; left:calc(50% - 25vh); top:calc(50% - 25vh);
   background-image:url(../assets/img/sapient-logo.png);
-  background-size:10vh; background-repeat:no-repeat;
+  background-size:50vh; background-repeat:no-repeat;
   z-index:-1;
-  opacity:.6;
+  opacity:.1;
   content:'';
 }
 div.container .item:first-child{
@@ -129,7 +128,7 @@ div.container .item:nth-child(5){
 }
 
 div.container .item h2{
-  color:#fff;
+  color:#333;
   line-height:1.2;
 }
 div.container .item:first-child h2{font-size:10vh;}
