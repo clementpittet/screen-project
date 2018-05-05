@@ -11,7 +11,6 @@
 </template>
 <script>
 let increment = 0
-let incrementGetter = 0
 export default {
   data () {
     return {
@@ -60,17 +59,17 @@ body {
   position:relative;
   width:100%; height:100vh;
   background:#fff;
-  /* background:linear-gradient(-45deg, rgb(255, 255, 255), rgb(215, 215, 215), rgba(255, 255, 255));
+  background:linear-gradient(-45deg, rgb(255, 255, 255), rgb(255, 255, 255), rgba(255, 255, 255));
   background-size:400% 400%;
-  -webkit-animation: Gradient 15s ease infinite;
-  -moz-animation: Gradient 15s ease infinite;
-  animation: Gradient 15s ease infinite; */
+  -webkit-animation: Gradient 3s ease infinite;
+  -moz-animation: Gradient 3s ease infinite;
+  animation: Gradient 3s ease infinite;
   font-family: 'Roboto', sans-serif;
   overflow:hidden;
 }
 div.container{
   position:absolute;
-  padding:3vh; height:calc(100% - 6vh);
+  padding:3vh 9vh; height:calc(100% - 6vh);
 }
 div.container .item{
   position:relative;
@@ -80,7 +79,7 @@ div.container .item{
   overflow:hidden;
   box-sizing:border-box;
   z-index:0;
-  transition:all 1s cubic-bezier(.55,0,.1,1);
+  transition:all 1s;
 }
 div.container .mask{
   position:absolute;
@@ -138,6 +137,6 @@ div.container .item:nth-child(4) h2{font-size:8vh;}
 div.container .item:nth-child(5) h2{font-size:7vh;}
 
 .flip-list-move{
-  transition:all 1s cubic-bezier(.55,0,.1,1);
+  transition:all 1s;
 }
 </style>

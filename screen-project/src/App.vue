@@ -11,25 +11,12 @@ export default {
 }
 </script>
 
-<style scope>
+<style>
 html,
 body,
 #app{
   width:100%; height:100%;
 }
-body {
-  position:relative;
-  width:100%; height:100vh;
-  color:#fff;
-  background:linear-gradient(-45deg, #c8e9f4, #d2b5bc, #f16667);
-  background-size:400% 400%;
-  -webkit-animation: Gradient 15s ease infinite;
-  -moz-animation: Gradient 15s ease infinite;
-  animation: Gradient 15s ease infinite;
-  font-family: 'Roboto', sans-serif;
-  overflow:hidden;
-}
-
 .loader {
   position:absolute;
   top:39vh; left:calc(50% - 5.5vh);
@@ -46,7 +33,6 @@ body {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
 @-webkit-keyframes Gradient {
   0% {
     background-position: 0% 50%
@@ -82,5 +68,4 @@ body {
     background-position: 0% 50%
   }
 }
-
 </style>

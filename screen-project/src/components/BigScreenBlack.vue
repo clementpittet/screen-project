@@ -8,6 +8,12 @@
         </li>
       </transition-group>
     </div>
+    <footer>
+      <div class="wrapper-footer">
+        <div class="date">Jeudi 05 Avril 2018</div>
+        <div class="hour">15:30</div>
+      </div>
+    </footer>
   </div>
 </template>
 <script>
@@ -60,7 +66,7 @@ body {
   position:relative;
   width:100%; height:100vh;
   color:#fff;
-  background:linear-gradient(-45deg, #c8e9f4, #d2b5bc, #f16667);
+  background:linear-gradient(-45deg, #1c1d20, #1c1d20, #1c1d20);
   background-size:400% 400%;
   -webkit-animation: Gradient 15s ease infinite;
   -moz-animation: Gradient 15s ease infinite;
@@ -94,8 +100,7 @@ ul{
   list-style:none;
 }
 ul li{
-  border-bottom:.2vh solid rgba(255,255,255,.5);
-  padding:4vh 0 1.5vh 1vh;
+  padding:0 0 5vh 1vh;
   font-size:5vh; line-height:1.2; text-transform:capitalize; font-weight:bold;
 }
 ul li div{
@@ -104,8 +109,7 @@ ul li div{
   transition:clip-path 1s cubic-bezier(.55,0,.1,1), transform 1s cubic-bezier(.55,0,.1,1);
 }
 ul li:first-child{
-  padding:0 0 1.5vh 1vh;
-  font-size:10vh;
+  font-size:11vh;
 }
 ul li:nth-child(2){
   font-size:8vh;
@@ -119,9 +123,50 @@ ul li:nth-child(4){
 ul li:nth-child(5){
   font-size:5vh;
 }
-.flip-list-move div{
-  transition:clip-path 1s cubic-bezier(.55,0,.1,1), transform 1s cubic-bezier(.55,0,.1,1);
-  clip-path:polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
-  transform:translate(0%, 100%);
+.flip-list-move{
+  transition:all 1s cubic-bezier(.55,0,.1,1);
+}
+footer{
+  position:absolute;
+  bottom:1vh; width:100%; left:0;
+  color:#b0deff;
+}
+footer .wrapper-footer{
+  display:flex;
+  padding-bottom:1.5vh; padding-left:1%; width:20vh;
+  border-bottom:.2vh solid #b0deff;
+  -webkit-animation: animated-footer 30s ease infinite;
+  -moz-animation: animated-footer 30s ease infinite;
+  animation: animated-footer 30s ease infinite;
+}
+footer .date{
+  margin-right:2vh;
+  opacity:.6;
+}
+@-webkit-keyframes animated-footer {
+  0% {
+    padding-left:1%;
+  }
+  100% {
+    padding-left:calc(100% - 20vh)
+  }
+}
+
+@-moz-keyframes animated-footer {
+  0% {
+    padding-left:1%;
+  }
+  100% {
+    padding-left:calc(100% - 20vh)
+  }
+}
+
+@keyframes animated-footer {
+  0% {
+    padding-left:1%;
+  }
+  100% {
+    padding-left:calc(100% - 20vh)
+  }
 }
 </style>
