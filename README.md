@@ -1,4 +1,4 @@
-# screen-project
+# Screen Project
 Projet écran - VueJS
 
 
@@ -6,10 +6,10 @@ Projet écran - VueJS
 Lancer l'application en mode dev:
 > npm run dev
 
-Lancer la contruction de l'application dans le dossier /dist :
+Lancer la construction de l'application dans le dossier /dist:
 > npm run build
 
-Après le build, ajouter un .htaccess dans le dossier dist pour la résolution des URL's :
+Après le build, ajouter un .htaccess dans le dossier dist pour la résolution des URL's:
 ```
 <ifModule mod_rewrite.c>
   RewriteEngine On
@@ -21,7 +21,7 @@ Après le build, ajouter un .htaccess dans le dossier dist pour la résolution d
 </ifModule>
 ```
 
-## VueJs dépendance utilisé:
+## VueJs dépendances utilisées:
 
 ```
 "normalize.css": "^8.0.0",
