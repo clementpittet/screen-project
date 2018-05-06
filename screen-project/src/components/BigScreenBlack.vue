@@ -30,7 +30,7 @@ export default {
       this.$actus.query().then((response) => {
         this.actus = response.data.slice(slice).reverse()
         if (increment !== 0) {
-          // this.move(this.actus, 0, 4)
+          this.move(this.actus, 0, 4)
         }
         increment++
       }, (response) => {
@@ -54,19 +54,19 @@ export default {
     this.getData(-5)
     setInterval(() => {
       this.move(this.actus, 0, 4)
-    }, 3000)
+    }, 6000)
     setInterval(() => {
       this.getData(-5)
-    }, 18000)
+    }, 30000)
   }
 }
 </script>
-<style>
+<style scope>
 body {
   position:relative;
   width:100%; height:100vh;
   color:#fff;
-  background:linear-gradient(-45deg, #1c1d20, #1c1d20, #1c1d20);
+  background:linear-gradient(-45deg, #212129, #353536, #8991a7);
   background-size:400% 400%;
   -webkit-animation: Gradient 15s ease infinite;
   -moz-animation: Gradient 15s ease infinite;
@@ -85,10 +85,12 @@ body {
   width:50vh; height:50vh; left:calc(50% - 25vh); top:calc(50% - 25vh);
   background-image:url(../assets/img/sapient-logo.png);
   background-size:50vh; background-repeat:no-repeat;
-  z-index:-1;
   opacity:.2;
+  z-index:-1;
   content:'';
-
+  -webkit-animation: animated-logo 15s ease infinite;
+  -moz-animation: animated-logo 15s ease infinite;
+  animation: animated-logo 15s ease infinite;
 }
 .container-item-list{
   display:flex;
@@ -137,7 +139,7 @@ footer .wrapper-footer{
   border-bottom:.2vh solid #b0deff;
   -webkit-animation: animated-footer 30s ease infinite;
   -moz-animation: animated-footer 30s ease infinite;
-  animation: animated-footer 30s ease infinite;
+  animation: animated-footer 30s  ease infinite;
 }
 footer .date{
   margin-right:2vh;
@@ -167,6 +169,18 @@ footer .date{
   }
   100% {
     padding-left:calc(100% - 20vh)
+  }
+}
+
+@keyframes animated-logo {
+  0% {
+    transform:scale(1);
+  }
+  50%{
+    transform:scale(1.2);
+  }
+  100% {
+    transform:scale(1);
   }
 }
 </style>

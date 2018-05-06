@@ -24,7 +24,7 @@ export default {
       this.$actus.query().then((response) => {
         this.actus = response.data.slice(slice).reverse()
         if (increment !== 0) {
-          // this.move(this.actus, 0, 4)
+          this.move(this.actus, 0, 4)
         }
         increment++
       }, (response) => {
@@ -48,14 +48,14 @@ export default {
     this.getData(-5)
     setInterval(() => {
       this.move(this.actus, 0, 4)
-    }, 3000)
+    }, 6000)
     setInterval(() => {
       this.getData(-5)
-    }, 18000)
+    }, 30000)
   }
 }
 </script>
-<style>
+<style scope>
 body {
   position:relative;
   width:100%; height:100vh;
@@ -79,10 +79,9 @@ body {
   width:50vh; height:50vh; left:calc(50% - 25vh); top:calc(50% - 25vh);
   background-image:url(../assets/img/sapient-logo.png);
   background-size:50vh; background-repeat:no-repeat;
-  z-index:-1;
   opacity:.2;
+  z-index:-1;
   content:'';
-
 }
 .container-item-list{
   display:flex;
@@ -98,7 +97,7 @@ ul li{
   padding:4vh 0 1.5vh 1vh;
   font-size:5vh; line-height:1.2; text-transform:capitalize; font-weight:bold;
 }
-ul li div{
+ul li{
   clip-path:polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   transform:translate(0);
   transition:clip-path 1s cubic-bezier(.55,0,.1,1), transform 1s cubic-bezier(.55,0,.1,1);
@@ -119,9 +118,9 @@ ul li:nth-child(4){
 ul li:nth-child(5){
   font-size:5vh;
 }
-.flip-list-move div{
-  transition:clip-path 1s cubic-bezier(.55,0,.1,1), transform 1s cubic-bezier(.55,0,.1,1);
+.flip-list-move{
   clip-path:polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
   transform:translate(0%, 100%);
+  transition:clip-path 1s cubic-bezier(.55,0,.1,1), transform 1s cubic-bezier(.55,0,.1,1);
 }
 </style>
