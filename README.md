@@ -3,6 +3,9 @@ Projet écran - VueJS
 
 
 ## Utilisation
+Initialisation de l'application, installation des dépendances:
+> npm i
+
 Lancer l'application en mode dev:
 > npm run dev
 
