@@ -68,4 +68,28 @@ body,
     background-position: 0% 50%
   }
 }
+@font-face{
+	font-family:"Frutiger LT W01 45 Light";
+	src:url("../fonts/2a004a53-ac5c-43b3-9eeb-9f74ae4c1609.woff") format("woff");
+}
+@font-face{
+	font-family:"Frutiger LT W01 55 Roman";
+	src:url("../fonts/3fbbd6b1-cfa7-4ff0-97ea-af1b2c489f15.woff") format("woff");
+}
+@font-face{
+	font-family:"Frutiger LT W01 65 Bold";
+	src:url("../fonts/9aa32a81-1124-4c43-b3db-15bfb1f7aed2.woff") format("woff");
+}
+.frutiger-light, .frutiger-roman, .frutiger, .frutiger-bold {
+	font-style:normal; font-weight:normal;
+}
+.frutiger-light {
+	font-family:"Frutiger LT W01 45 Light", sans-serif;
+}
+.frutiger-roman, .frutiger {
+	font-family:"Frutiger LT W01 55 Roman", sans-serif;
+}
+.frutiger-bold {
+	font-family:"Frutiger LT W01 65 Bold", sans-serif;
+}
 </style>

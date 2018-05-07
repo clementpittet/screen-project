@@ -135,7 +135,7 @@ footer{
 }
 footer .wrapper-footer{
   display:flex;
-  padding-bottom:1.5vh; padding-left:1%; width:20vh;
+  padding-bottom:1.5vh; padding-left:1%; width:21vh;
   border-bottom:.2vh solid #b0deff;
   -webkit-animation: animated-footer 30s ease infinite;
   -moz-animation: animated-footer 30s ease infinite;
@@ -150,7 +150,7 @@ footer .date{
     padding-left:1%;
   }
   100% {
-    padding-left:calc(100% - 20vh)
+    padding-left:calc(100% - 21vh)
   }
 }
 
@@ -159,7 +159,7 @@ footer .date{
     padding-left:1%;
   }
   100% {
-    padding-left:calc(100% - 20vh)
+    padding-left:calc(100% - 21vh)
   }
 }
 
@@ -168,7 +168,7 @@ footer .date{
     padding-left:1%;
   }
   100% {
-    padding-left:calc(100% - 20vh)
+    padding-left:calc(100% - 21vh)
   }
 }
 
