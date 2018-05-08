@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper-component">
     <div v-if="loading" class="loader"></div>
+    <slider ref="slider" :pages="pages" :sliderinit="sliderinit" @slide='slide' @init='onInit'></slider>
     <div class="container-item-list">
       <transition-group name="flip-list" tag="ul" class="container">
         <li v-for="actu in actus" :key="actu.id">
@@ -17,47 +18,96 @@
   </div>
 </template>
 <script>
-let increment = 0
+import slider from 'vue-concise-slider'
+// let increment = 0
 export default {
+  components: {
+    slider
+  },
   data () {
     return {
-      actus: [],
-      loading: false
+      actus: [
+        {id: 1, title: 'Atelier de conception éditoriale Crédit Agricole le 19 avril, Véronique en déplacement chez le client'},
+        {id: 2, title: 'Benjamin, Front/BackEnd nous rejoindra le mardi 3 avril'},
+        {id: 3, title: 'EDF Terr@data V2 : atelier de co-création le 10 avril à Paris avec Véronique'},
+        {id: 4, title: 'Atelier OGF à la Bastille : Luc en déplacement jeudi 12 avril'},
+        {id: 5, title: 'Le chabot EDF Entreprises est en ligne ! Bravo à toute la Team EDF'}
+      ],
+      pages: [
+        {
+          html: '<div class="slide"></div>',
+          style: {'background': '#f16667'}
+        },
+        {
+          html: '<div class="slide"></div>',
+          style: {'background': '#c8e9f4'}
+        },
+        {
+          html: '<div class="slide"></div>',
+          style: {'background': '#e4ea8e'}
+        },
+        {
+          html: '<div class="slide"></div>',
+          style: {'background': '#d2b5bc'}
+        },
+        {
+          html: '<div class="slide"></div>',
+          style: {'background': '#f9bfc0'}
+        }
+      ],
+      loading: false,
+      sliderinit: {
+        autoplay: 30000,
+        loop: true,
+        direction: 'horizontal',
+        infinite: 1,
+        timingFunction: 'ease',
+        duration: 2000
+      }
     }
   },
   methods: {
     getData (slice) {
-      this.$actus.query().then((response) => {
-        this.actus = response.data.slice(slice).reverse()
-        if (increment !== 0) {
-          this.move(this.actus, 0, 4)
-        }
-        increment++
-      }, (response) => {
-        console.log('erreur', response)
-      })
+      // this.$actus.query().then((response) => {
+      //   this.actus = response.data.slice(slice).reverse()
+      //   if (increment !== 0) {
+      //     this.move(this.actus, 0, 4)
+      //   }
+      //   increment++
+      // }, (response) => {
+      //   console.log('erreur', response)
+      // })
     },
     move (array, fromIndex, toIndex) {
       array.splice(toIndex, 0, array.splice(fromIndex, 1)[0])
+    },
+    slide (data) {
+      console.log(data)
+    },
+    onTap (data) {
+      console.log(data)
+    },
+    onInit (data) {
+      console.log(data)
     }
   },
   mounted () {
-    this.$actus = this.$resource('posts', {}, {}, {
-      before: () => {
-        this.loading = true
-      },
-      after: () => {
-        this.loading = false
-      }
-    })
+    // this.$actus = this.$resource('posts', {}, {}, {
+    //   before: () => {
+    //     this.loading = true
+    //   },
+    //   after: () => {
+    //     this.loading = false
+    //   }
+    // })
     /** Event with Data */
-    this.getData(-5)
+    // this.getData(-5)
     setInterval(() => {
       this.move(this.actus, 0, 4)
-    }, 6000)
+    }, 15000)
     setInterval(() => {
-      this.getData(-5)
-    }, 30000)
+      // this.getData(-5)
+    }, 75000)
   }
 }
 </script>
@@ -65,14 +115,16 @@ export default {
 body {
   position:relative;
   width:100%; height:100vh;
-  color:#fff;
-  background:linear-gradient(-45deg, #212129, #353536, #8991a7);
-  background-size:400% 400%;
-  -webkit-animation: Gradient 15s ease infinite;
-  -moz-animation: Gradient 15s ease infinite;
-  animation: Gradient 15s ease infinite;
-  font-family: 'Roboto', sans-serif;
+  color:#353536;
+  font-family:"Frutiger LT W01 55 Roman", sans-serif;
   overflow:hidden;
+}
+.slider-container{
+  position:absolute;
+  z-index:-2;
+}
+.slider-pagination-bullets{
+  display:none;
 }
 .wrapper-component{
   position:relative;
@@ -88,9 +140,7 @@ body {
   opacity:.2;
   z-index:-1;
   content:'';
-  -webkit-animation: animated-logo 15s ease infinite;
-  -moz-animation: animated-logo 15s ease infinite;
-  animation: animated-logo 15s ease infinite;
+  animation:animated-logo 15s ease infinite;
 }
 .container-item-list{
   display:flex;
@@ -102,29 +152,19 @@ ul{
   list-style:none;
 }
 ul li{
-  padding:0 0 5vh 1vh;
-  font-size:5vh; line-height:1.2; text-transform:capitalize; font-weight:bold;
+  padding:0 0 4vh 1vh;
+  font-size:5vh; line-height:1.2;
 }
 ul li div{
   clip-path:polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   transform:translate(0);
   transition:clip-path 1s cubic-bezier(.55,0,.1,1), transform 1s cubic-bezier(.55,0,.1,1);
 }
-ul li:first-child{
-  font-size:11vh;
-}
-ul li:nth-child(2){
-  font-size:8vh;
-}
-ul li:nth-child(3){
-  font-size:7vh;
-}
-ul li:nth-child(4){
-  font-size:6vh;
-}
-ul li:nth-child(5){
-  font-size:5vh;
-}
+ul li:first-child{font-size:9vh;}
+ul li:nth-child(2){font-size:6vh;}
+ul li:nth-child(3){font-size:5vh;}
+ul li:nth-child(4){font-size:4vh;}
+ul li:nth-child(5){font-size:3.5vh;}
 .flip-list-move{
   transition:all 1s cubic-bezier(.55,0,.1,1);
 }
@@ -135,43 +175,23 @@ footer{
 }
 footer .wrapper-footer{
   display:flex;
-  padding-bottom:1.5vh; padding-left:1%; width:21vh;
+  padding-bottom:1.5vh; padding-left:1%; width:15%;
   border-bottom:.2vh solid #b0deff;
-  -webkit-animation: animated-footer 30s ease infinite;
-  -moz-animation: animated-footer 30s ease infinite;
-  animation: animated-footer 30s  ease infinite;
+  font-size:2vh;
+  animation:animated-footer 30s  ease infinite;
 }
 footer .date{
   margin-right:2vh;
-  opacity:.6;
+  opacity:.8;
 }
-@-webkit-keyframes animated-footer {
-  0% {
-    padding-left:1%;
-  }
-  100% {
-    padding-left:calc(100% - 21vh)
-  }
-}
-
-@-moz-keyframes animated-footer {
-  0% {
-    padding-left:1%;
-  }
-  100% {
-    padding-left:calc(100% - 21vh)
-  }
-}
-
 @keyframes animated-footer {
   0% {
     padding-left:1%;
   }
   100% {
-    padding-left:calc(100% - 21vh)
+    padding-left:calc(100% - 15%);
   }
 }
-
 @keyframes animated-logo {
   0% {
     transform:scale(1);
