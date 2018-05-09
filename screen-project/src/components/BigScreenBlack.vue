@@ -57,7 +57,7 @@ export default {
       ],
       loading: false,
       sliderinit: {
-        autoplay: 30000,
+        autoplay: 15000,
         loop: true,
         direction: 'horizontal',
         infinite: 1,
@@ -160,25 +160,28 @@ ul li div{
   transform:translate(0);
   transition:clip-path 1s cubic-bezier(.55,0,.1,1), transform 1s cubic-bezier(.55,0,.1,1);
 }
-ul li:first-child{font-size:9vh;}
+ul li:first-child{font-size:9vh;
+  font-family:"Frutiger LT W01 65 Bold", sans-serif;}
 ul li:nth-child(2){font-size:6vh;}
 ul li:nth-child(3){font-size:5vh;}
-ul li:nth-child(4){font-size:4vh;}
-ul li:nth-child(5){font-size:3.5vh;}
+ul li:nth-child(4){font-size:4vh;
+  font-family:"Frutiger LT W01 45 Light", sans-serif;}
+ul li:nth-child(5){font-size:3.5vh;
+  font-family:"Frutiger LT W01 45 Light", sans-serif;}
 .flip-list-move{
   transition:all 1s cubic-bezier(.55,0,.1,1);
 }
 footer{
   position:absolute;
   bottom:1vh; width:100%; left:0;
-  color:#b0deff;
+  color:#fff;
 }
 footer .wrapper-footer{
   display:flex;
   padding-bottom:1.5vh; padding-left:1%; width:15%;
-  border-bottom:.2vh solid #b0deff;
+  border-bottom:.2vh solid #fff;
   font-size:2vh;
-  animation:animated-footer 30s  ease infinite;
+  animation:animated-footer 15s  ease infinite;
 }
 footer .date{
   margin-right:2vh;
