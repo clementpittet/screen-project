@@ -12,11 +12,6 @@ export default {
 </script>
 
 <style>
-html,
-body,
-#app{
-  width:100%; height:100%;
-}
 .loader {
   position:absolute;
   top:39vh; left:calc(50% - 5.5vh);

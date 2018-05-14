@@ -29,6 +29,7 @@ Après le build, ajouter un .htaccess dans le dossier dist pour la résolution d
 ```
 "normalize.css": "^8.0.0",
 "vue": "^2.5.2",
+"vue-concise-slider": "^2.4.8",
 "vue-lodash": "^2.0.0",
 "vue-resource": "^1.5.0",
 "vue-router": "^3.0.1"
