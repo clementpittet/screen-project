@@ -69,6 +69,7 @@ export default {
   methods: {
     getData () {
       this.$actus.query().then((response) => {
+        this.actus = response.data
         if (increment !== 0) {
           this.move(this.actus, 0, 4)
         }
