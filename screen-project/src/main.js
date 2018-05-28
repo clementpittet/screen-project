@@ -11,7 +11,7 @@ Vue.use(VueResource)
 Vue.use(VueLodash)
 
 Vue.config.productionTip = false
-Vue.http.options.root = 'https://jsonplaceholder.typicode.com'
+Vue.http.options.root = 'http://wazzup-nancy.int.sapientrazorfish.fr'
 Vue.http.headers.common['Authorization'] = 'Basic YXBpOnBhc3N3b3Jk'
 
 Vue.http.interceptors.push((request, next) => {

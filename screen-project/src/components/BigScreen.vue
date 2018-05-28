@@ -13,7 +13,7 @@
       <div class="wrapper-footer">
         <div class="wrapper-text">
           <div class="date">{{ date }}</div>
-          <div class="hour">{{ hour }}</div>
+          <div class="hour" v-html="hour">{{ hour }}</div>
         </div>
       </div>
     </footer>
@@ -67,9 +67,8 @@ export default {
     }
   },
   methods: {
-    getData (slice) {
+    getData () {
       this.$actus.query().then((response) => {
-        this.actus = response.data.slice(slice).reverse()
         if (increment !== 0) {
           this.move(this.actus, 0, 4)
         }
@@ -95,7 +94,7 @@ export default {
       hour = ('0' + hour).slice(-2)
       let minutes = date.getMinutes()
       minutes = ('0' + minutes).slice(-2)
-      return `${hour}:${minutes}`
+      return `${hour}<span>:</span>${minutes}`
     }
   },
   mounted () {
@@ -104,7 +103,7 @@ export default {
     setInterval(() => {
       this.hour = this.getHour()
     }, 1000)
-    this.$actus = this.$resource('posts', {}, {}, {
+    this.$actus = this.$resource('info.php', {}, {}, {
       before: () => {
         this.loading = true
       },
@@ -113,12 +112,12 @@ export default {
       }
     })
     /** Event with Data */
-    this.getData(-5)
+    this.getData()
     setInterval(() => {
       this.move(this.actus, 0, 4)
     }, 15000)
     setInterval(() => {
-      this.getData(-5)
+      this.getData()
     }, 75000)
   }
 }
@@ -213,12 +212,26 @@ footer .wrapper-text{
   display:flex;
   animation:animated-date 3s ease-in-out infinite;
 }
+footer .hour span{
+  animation:animated-seconds 1s ease-in-out infinite;
+}
 @keyframes animated-footer {
   0% {
     padding-left:1%;
   }
   100% {
     padding-left:calc(100vw - 15vw);
+  }
+}
+@keyframes animated-seconds {
+  0% {
+    opacity:0;
+  }
+  50%{
+    opacity:1;
+  }
+  100% {
+    opacity:0;
   }
 }
 @keyframes animated-date {
