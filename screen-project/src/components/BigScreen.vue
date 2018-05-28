@@ -11,15 +11,17 @@
     </div>
     <footer>
       <div class="wrapper-footer">
-        <div class="date">{{ date }}</div>
-        <div class="hour">{{ hour }}</div>
+        <div class="wrapper-text">
+          <div class="date">{{ date }}</div>
+          <div class="hour">{{ hour }}</div>
+        </div>
       </div>
     </footer>
   </div>
 </template>
 <script>
 import slider from 'vue-concise-slider'
-// let increment = 0
+let increment = 0
 let jours = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']
 let months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
 export default {
@@ -28,13 +30,7 @@ export default {
   },
   data () {
     return {
-      actus: [
-        {id: 1, title: 'Atelier de conception éditoriale Crédit Agricole le 19 avril, Véronique en déplacement chez le client'},
-        {id: 2, title: 'Benjamin, Front/BackEnd nous rejoindra le mardi 3 avril'},
-        {id: 3, title: 'EDF Terr@data V2 : atelier de co-création le 10 avril à Paris avec Véronique'},
-        {id: 4, title: 'Atelier OGF à la Bastille : Luc en déplacement jeudi 12 avril'},
-        {id: 5, title: 'Le chabot EDF Entreprises est en ligne ! Bravo à toute la Team EDF'}
-      ],
+      actus: [],
       date: '',
       hour: '',
       pages: [
@@ -72,15 +68,15 @@ export default {
   },
   methods: {
     getData (slice) {
-      // this.$actus.query().then((response) => {
-      //   this.actus = response.data.slice(slice).reverse()
-      //   if (increment !== 0) {
-      //     this.move(this.actus, 0, 4)
-      //   }
-      //   increment++
-      // }, (response) => {
-      //   console.log('erreur', response)
-      // })
+      this.$actus.query().then((response) => {
+        this.actus = response.data.slice(slice).reverse()
+        if (increment !== 0) {
+          this.move(this.actus, 0, 4)
+        }
+        increment++
+      }, (response) => {
+        console.log('erreur', response)
+      })
     },
     move (array, fromIndex, toIndex) {
       array.splice(toIndex, 0, array.splice(fromIndex, 1)[0])
@@ -108,21 +104,21 @@ export default {
     setInterval(() => {
       this.hour = this.getHour()
     }, 1000)
-    // this.$actus = this.$resource('posts', {}, {}, {
-    //   before: () => {
-    //     this.loading = true
-    //   },
-    //   after: () => {
-    //     this.loading = false
-    //   }
-    // })
+    this.$actus = this.$resource('posts', {}, {}, {
+      before: () => {
+        this.loading = true
+      },
+      after: () => {
+        this.loading = false
+      }
+    })
     /** Event with Data */
-    // this.getData(-5)
+    this.getData(-5)
     setInterval(() => {
       this.move(this.actus, 0, 4)
     }, 15000)
     setInterval(() => {
-      // this.getData(-5)
+      this.getData(-5)
     }, 75000)
   }
 }
@@ -204,15 +200,18 @@ footer{
   color:#fff;
 }
 footer .wrapper-footer{
-  display:flex;
   padding-bottom:1.5vh; padding-left:1%; width:15vw;
   border-bottom:.2vh solid #fff;
   font-size:2vh;
-  animation:animated-footer 15s ease-out infinite;
+  animation:animated-footer 15s ease-in-out infinite;
 }
 footer .date{
   margin-right:2vh;
   opacity:.8;
+}
+footer .wrapper-text{
+  display:flex;
+  animation:animated-date 3s ease-in-out infinite;
 }
 @keyframes animated-footer {
   0% {
@@ -220,6 +219,17 @@ footer .date{
   }
   100% {
     padding-left:calc(100vw - 15vw);
+  }
+}
+@keyframes animated-date {
+  0% {
+    transform:scale(1);
+  }
+  50%{
+    transform:scale(1.1);
+  }
+  100% {
+    transform:scale(1);
   }
 }
 @keyframes animated-logo {
