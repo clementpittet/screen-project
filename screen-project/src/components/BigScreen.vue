@@ -127,7 +127,7 @@ export default {
   }
 }
 </script>
-<style scope>
+<style>
 html,
 body,
 #app{
@@ -140,7 +140,7 @@ body {
   font-family:"Frutiger LT W01 55 Roman", sans-serif;
   overflow:hidden;
 }
-.slider-container{
+#app .slider-container{
   position:absolute;
   z-index:-2;
 }
