@@ -106,10 +106,8 @@ export default {
     }, 1000)
     this.$actus = this.$resource('info.php', {}, {}, {
       before: () => {
-        this.loading = true
       },
       after: () => {
-        this.loading = false
       }
     })
     /** Event with Data */
@@ -119,7 +117,7 @@ export default {
     }, 15000)
     setInterval(() => {
       this.getData()
-    }, 75000)
+    }, 3600000)
   }
 }
 </script>
@@ -200,7 +198,7 @@ footer{
   color:#fff;
 }
 footer .wrapper-footer{
-  padding-bottom:1.5vh; padding-left:1%; width:15vw;
+  padding-bottom:1.5vh; padding-left:1%; width:21vw;
   border-bottom:.2vh solid #fff;
   font-size:2vh;
   animation:animated-footer 15s ease-in-out infinite;
@@ -211,6 +209,8 @@ footer .date{
 }
 footer .wrapper-text{
   display:flex;
+  justify-content:flex-end;
+  padding-right:3vh;
   animation:animated-date 3s ease-in-out infinite;
 }
 footer .hour span{
@@ -221,7 +221,7 @@ footer .hour span{
     padding-left:1%;
   }
   100% {
-    padding-left:calc(100vw - 15vw);
+    padding-left:calc(100vw - 21vw);
   }
 }
 @keyframes animated-seconds {
